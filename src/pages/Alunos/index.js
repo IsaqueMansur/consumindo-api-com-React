@@ -27,7 +27,7 @@ export default function Alunos() {
               {get(aluno, 'Fotos[0].url', false) ? (
                 <img crossOrigin="" src={aluno.Fotos[0].url} alt="" />
               ) : (
-                <FaUserCircle size={60} />
+                <FaUserCircle size={40} />
               )}
             </ProfilePicture>
             <span>{aluno.nome}</span>
