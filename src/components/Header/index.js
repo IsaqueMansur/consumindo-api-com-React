@@ -14,7 +14,7 @@ export default function Header() {
       <Link to="/register">
         <FaUserAlt size={24} />
       </Link>
-      <Link to="/login">
+      <Link to="/login" aria-disabled>
         <FaSignInAlt size={24} />
       </Link>
     </Nav>

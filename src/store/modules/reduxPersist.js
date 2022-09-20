@@ -5,9 +5,9 @@ export default (reducers) => {
   // eslint-disable-next-line no-unused-vars
   const persistedReducers = persistReducer(
     {
-      key: 'REACT-BASE',
+      key: 'CONSUMO-API',
       storage,
-      whitelist: ['example'],
+      whitelist: ['auth'],
     },
     reducers,
   );

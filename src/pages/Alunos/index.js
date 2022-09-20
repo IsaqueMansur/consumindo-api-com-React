@@ -7,18 +7,24 @@ import { Container } from '../../styles/GlobalStyles';
 import { AlunoContainer, ProfilePicture } from './styled';
 import axios from '../../services/axios';
 
+import Loading from '../../components/Loading';
+
 export default function Alunos() {
   const [alunos, setAlunos] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   React.useEffect(() => {
+    setIsLoading(true);
     async function getData() {
       const response = await axios.get('/alunos');
       setAlunos(response.data);
+      setIsLoading(false);
     }
     getData();
   }, []);
 
   return (
     <Container>
+      <Loading isLoading={isLoading} />
       <h1>Alunos</h1>
       <AlunoContainer>
         {alunos.map((aluno) => (
