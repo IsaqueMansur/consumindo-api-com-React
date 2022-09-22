@@ -11,8 +11,8 @@ import * as actions from '../../store/modules/auth/actions';
 import Loading from '../../components/Loading';
 
 export default function Login() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const prevPath = useLocation().state;
 
@@ -37,7 +37,16 @@ export default function Login() {
 
     if (formErrors) return;
 
-    dispatch(actions.loginRequest({ email, password, prevPath }));
+    dispatch(actions.loginRequest({ email, password, prevPath, navigate }));
+  }
+
+  function handleLogout(e) {
+    e.preventDefault();
+    dispatch(
+      actions.loginFailure(),
+      navigate('/'),
+      toast.warn('Logout efetuado com sucesso !'),
+    );
   }
 
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
@@ -66,13 +75,18 @@ export default function Login() {
       </Container>
     );
   }
-  try {
-    navigate(prevPath);
-  } catch {} // eslint-disable-line no-empty
+
   return (
     <Container>
       <Loading isLoading={isLoading} />
-      <h1>TESTE</h1>
+      <>
+        {/* eslint-disable-next-line react/jsx-no-bind */}
+        <Form onSubmit={handleLogout}>
+          <h1>Realmete deseja sair?</h1>
+          <br />
+          <button type="submit">Confirmar</button>
+        </Form>
+      </>
     </Container>
   );
 }
