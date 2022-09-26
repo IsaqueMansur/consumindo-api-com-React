@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { get } from 'lodash';
 import {
   FaUserCircle,
@@ -16,6 +16,7 @@ import axios from '../../services/axios';
 import Loading from '../../components/Loading';
 
 export default function Alunos() {
+  const navigate = useNavigate();
   const [alunos, setAlunos] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   React.useEffect(() => {
@@ -43,6 +44,7 @@ export default function Alunos() {
 
       if (status === 401) {
         toast.error('Você precisa estar logado !');
+        navigate('/login');
       } else {
         toast.error('Ocorreu algum erro ao excluir aluno');
       }

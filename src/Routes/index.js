@@ -16,7 +16,7 @@ export default function Routers() {
       <Route element={<PrivateRoute />}>
         <Route exact path="/aluno/:id/edit" element={<Aluno />} />
         <Route exact path="/aluno/" element={<Aluno />} />
-        <Route exact path="/foto/:id" element={<Fotos />} />
+        <Route exact path="/fotos/:id" element={<Fotos />} />
       </Route>
       <Route exact path="/register" element={<Register />} />
       <Route path="/" element={<Alunos />} />
